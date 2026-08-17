@@ -1,0 +1,27 @@
+generated: '2026-08-17'
+method: searched
+source: >-
+  npm registry search, pypi.org, github.com org probes, plus the Domissori and Edacademy
+  websites — no first-party client library exists
+packages: []
+package_count: 0
+notes: >-
+  Educ-up publishes no SDK, client library or CLI in any registry, which follows from it
+  publishing no API. No `Packages` or `SDKs` pointer is wired in apis.yml.
+
+  Registries checked on 2026-08-17: npm (registry.npmjs.org search for "educ-up" and
+  "educup" — only unrelated generic packages such as find-up/git-up), PyPI
+  (pypi.org/pypi/educup/json → 404), and the GitHub org namespaces
+  github.com/educ-up (404) and github.com/domissori (404).
+namespace_collision_warning: >-
+  DO NOT ATTRIBUTE THE "educup" NAMESPACE TO THIS COMPANY. github.com/educup returns 200
+  and carries 34 Python/Dart/Flutter repositories, but its profile identifies a DIFFERENT
+  company: "EducUp is an education technology startup on a mission to make learning easy
+  and fun", located in the United States, with verified domains educup.com and educup.io
+  and a claimed 1.5M learners across 180 countries in gamified English/Math micro-lessons.
+  The Educ-up profiled here is a French social-impact services group (SIREN 822074258,
+  Saint-Denis, La Réunion) operating in-home Montessori childcare (Domissori) and a
+  Qualiopi-certified vocational training centre (Edacademy). Same-sounding name, different
+  company, different country, different business. Any spec, package or repo found under
+  educup.com / educup.io / github.com/educup belongs to the US company and must not be
+  saved into this repo.

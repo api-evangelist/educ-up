@@ -1,0 +1,19 @@
+generated: '2026-08-17'
+method: searched
+source: >-
+  Educ-up, Domissori and Edacademy public sites — no developer documentation exists in
+  which limits could be published
+limit_count: 0
+rate_limits: []
+headers: []
+notes: >-
+  No rate limits are documented and none can be observed, because Educ-up publishes no
+  API and no developer documentation. An honest zero, not an unchecked field. No
+  `RateLimits` pointer is wired in apis.yml.
+
+  The only rate-limit signal observed anywhere on these hosts is infrastructure, not an
+  API contract: the parked educ-up.fr host returns IONOS edge headers
+  `x-ws-ratelimit-limit: 1000` / `x-ws-ratelimit-remaining: 999` on its 302 to the
+  shared-hosting default page. That is the hosting provider's edge throttle on a dead
+  site, not a published API limit, and it is recorded here only so a later round does not
+  mistake it for one.

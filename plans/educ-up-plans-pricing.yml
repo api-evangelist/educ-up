@@ -1,0 +1,17 @@
+generated: '2026-08-17'
+method: searched
+source: https://domissori.fr/devis/
+plan_count: 0
+plans: []
+notes: >-
+  Educ-up publishes NO API plans, because it publishes no API. There is nothing gated
+  behind a developer tier, no usage quota and no overage schedule anywhere on its public
+  surface.
+
+  What it does publish commercially is service pricing that is quote-based rather than
+  listed: Domissori sells in-home childcare and tutoring through a quote request
+  (https://domissori.fr/devis/, HTTP 200) plus a public subsidy simulator
+  (https://domissori.fr/simulation-aide-garde-enfant/), and Edacademy sells vocational
+  training programmes whose cost is normally borne by French funding routes (CPF,
+  apprenticeship/alternance contracts, OPCO) rather than a posted per-seat price. Neither
+  is an API plan, so no `Plans` pointer is wired in apis.yml.

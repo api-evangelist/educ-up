@@ -1,0 +1,120 @@
+generated: '2026-08-17'
+method: probed
+source: live probes of /.well-known/* on every host associated with Educ-up
+host: https://educ-up.fr
+result: no-documents
+notes: >-
+  NO WELL-KNOWN DOCUMENT IS SERVED ON ANY EDUC-UP HOST, and no `WellKnown`,
+  `SecurityTxt`, `APICatalog` or `AgentCard` pointer is wired in apis.yml as a result —
+  this file records a verified absence, not a presence.
+
+  The corporate domain educ-up.fr must be read carefully: it answers HTTP 200 with the
+  SAME 336-byte body for EVERY path, including a nonsense control path. That body is an
+  IONOS/1&1 shared-hosting default page (`<meta http-equiv="Refresh" content="0;url=defaultsite">`)
+  reached after a 302 to http://s880385942.onlinehome.fr/. Every 200 recorded below for
+  educ-up.fr is therefore a soft-404 catch-all, NOT a document, and none of them earns credit.
+
+  The two hosts that do serve real sites — domissori.fr (WordPress) and www.edacademy.fr
+  (Webflow) — return honest 404s on the control path and 404 on every /.well-known/ path.
+hosts:
+- host: https://educ-up.fr
+  verdict: soft-200-catch-all
+  control_path: /.well-known/zzz-control-9f3k
+  control_status: 200
+  control_size: 336
+  note: >-
+    Parked IONOS default site. Returns 200 + the identical 336-byte shell for
+    /.well-known/security.txt, /.well-known/openid-configuration,
+    /.well-known/oauth-authorization-server, /.well-known/api-catalog,
+    /.well-known/ai-plugin.json, /.well-known/agent-card.json, /.well-known/agent.json,
+    /llms.txt, /openapi.json and /api. All are treated as MISSES.
+  documents: []
+- host: https://domissori.fr
+  verdict: no-documents
+  control_path: /.well-known/zzz-control-9f3k
+  control_status: 404
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://www.edacademy.fr
+  verdict: no-documents
+  control_path: /.well-known/zzz-control-9f3k
+  control_status: 404
+  note: >-
+    Webflow serves an 88-byte "Invalid .well-known request" body with a 404 status for
+    every /.well-known/* path.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://formation.edacademy.fr
+  verdict: no-documents
+  control_path: /.well-known/zzz-control-9f3k
+  control_status: 404
+  note: >-
+    Self-hosted Moodle LMS (Apache/2.4.58 Ubuntu, MoodleSession cookie, login gate at
+    /login/index.php) through which Edacademy delivers its online training. Stock Moodle
+    web-service endpoints are enabled but token-gated and undocumented by Educ-up:
+    /webservice/rest/server.php?wsfunction=core_webservice_get_site_info returns
+    HTTP 200 with {"exception":"moodle_exception","errorcode":"invalidtoken"},
+    /login/token.php returns 200 with errorcode "missingparam", and /lib/ajax/service.php
+    returns 200 with errorcode "codingerror". Those are MOODLE's contract, not a contract
+    Educ-up authored, documented or offers to third parties — no Moodle OpenAPI or
+    function list has been saved into this repo, and no API entry was created from them.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://educ-up.com
+  verdict: no-documents
+  ownership: unverified
+  control_path: /.well-known/zzz-control-9f3k
+  control_status: 404
+  note: >-
+    Probed for completeness and NOT attributed to Educ-up. educ-up.com is a single-page
+    Framer site whose only content is the title "EducUp" and the description
+    "Educational Services"; its sitemap contains one URL and nothing on the page names
+    the French Educ-up group, Domissori or Edacademy. A separate US edtech company
+    trades as EducUp on educup.com / educup.io — see packages/educ-up-packages.yml for
+    the namespace-collision record.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+x-evidence:
+  fetched: '2026-08-17'
+  hosts_probed: 5
+  documents_found: 0

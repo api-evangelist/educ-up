@@ -1,7 +1,18 @@
 aid: educ-up
 name: Educ-up
-description: 'Educ-up is a company surfaced as a portfolio company of serena and added to the API Evangelist
-  network as a stub for enrichment. Sector: edtech. This profile is a lead awaiting the enrichment pipeline.'
+description: 'Educ-up is a French social-impact education group founded in 2016 by Mohamed El Mazzouji,
+  headquartered in Saint-Denis, La Réunion with establishments in metropolitan France including Montreuil
+  (Seine-Saint-Denis). It operates two consumer- and professional-facing brands rather than a software
+  product: Domissori, launched in 2019, which places Montessori-trained educators in family homes for
+  childcare, educational workshops and academic tutoring across Vannes, Chambéry, Lyon, Grenoble,
+  Perpignan, Montpellier, Marseille and Saint-Denis; and Edacademy, a Qualiopi-certified training and
+  apprenticeship centre for early-childhood and personal-care professions (CAP AEPE, Titre Pro ADVF,
+  Bac Pro ASSP, parenting and Montessori support). The group also runs Ed''solidaire, a subsidy scheme
+  that opens paid childcare to low-income families. Investors include Serena, M Capital, Inco Ventures,
+  MakeSense and Racine2. Edacademy delivers its programmes through a self-hosted Moodle learning
+  platform at formation.edacademy.fr, but that is an end-user LMS: as of August 2026 Educ-up publishes
+  no developer portal, no API documentation and no machine-readable API contract, and its corporate
+  domain educ-up.fr now redirects to a parked IONOS default site.'
 url: https://raw.githubusercontent.com/api-evangelist/educ-up/refs/heads/main/apis.yml
 x-type: company
 x-source: serena-portfolio
@@ -13,6 +24,13 @@ modified: '2026-08-17'
 tags:
 - Company
 - Edtech
+- Education
+- Childcare
+- Training
+- Montessori
+- Vocational Training
+- France
+- Social Impact
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -22,3 +40,64 @@ maintainers:
 common:
 - type: Website
   url: https://educ-up.fr/
+  name: Educ-up corporate site (currently parked — 302s to an IONOS default site)
+- type: Subsidiary
+  url: https://domissori.fr/
+  name: Domissori — in-home Montessori childcare and tutoring
+- type: Subsidiary
+  url: https://www.edacademy.fr/
+  name: Edacademy — Qualiopi-certified training and apprenticeship centre
+- type: Product
+  url: https://formation.edacademy.fr/
+  name: Edacademy e-learning platform — self-hosted Moodle LMS for enrolled learners (login-gated,
+    no developer program)
+- type: Blog
+  url: https://domissori.fr/blog/
+  name: Domissori blog
+- type: Support
+  url: https://www.edacademy.fr/contact
+  name: Edacademy contact page
+- type: TermsOfService
+  url: https://www.edacademy.fr/conditions-utilisation
+- type: PrivacyPolicy
+  url: https://domissori.fr/politique-de-confidentialite/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/educ-up/
+- type: DomainSecurity
+  url: security/educ-up-domain-security.yml
+- type: LLMsTxt
+  url: llms/educ-up-llms.txt
+x-enrichment:
+  date: '2026-08-17'
+  status: minimal
+  artifacts_added: 6
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: The only software Educ-up operates is an end-user Moodle LMS at formation.edacademy.fr for
+    enrolled Edacademy learners — its stock Moodle web-service endpoint answers 200 with
+    errorcode "invalidtoken" but is Moodle's contract, token-gated and undocumented by Educ-up — while
+    the corporate domain educ-up.fr now 302s to an IONOS parked page that returns the same 336-byte
+    body for every path including nonsense ones, and the Domissori (WordPress) and Edacademy (Webflow)
+    marketing sites carry no developer portal, no API reference and no spec at any probed location.
+  evidence:
+  - url: https://educ-up.fr/
+    status: 200
+  - url: https://educ-up.fr/.well-known/zzz-control-9f3k
+    status: 200
+  - url: https://domissori.fr/openapi.json
+    status: 404
+  - url: https://domissori.fr/.well-known/agent-card.json
+    status: 404
+  - url: https://www.edacademy.fr/llms.txt
+    status: 404
+  - url: https://www.edacademy.fr/.well-known/agent-card.json
+    status: 404
+  - url: https://formation.edacademy.fr/openapi.json
+    status: 404
+  - url: https://formation.edacademy.fr/webservice/rest/server.php?wsfunction=core_webservice_get_site_info
+    status: 200
+  - url: https://educ-up.com/openapi.json
+    status: 404
+  checked: '2026-08-17'
