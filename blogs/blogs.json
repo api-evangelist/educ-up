@@ -1,0 +1,14 @@
+{
+  "repo": "educ-up",
+  "feeds": [
+    {
+      "source": "https://formation.edacademy.fr/",
+      "feed_url": "https://formation.edacademy.fr/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-22T20:20:02Z"
+}
